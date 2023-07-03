@@ -114,6 +114,8 @@ const UserWidget = ({userid, picturePath}) => {
                     </Box>
                 </Box>
 
+                <Divider />
+
                 {/* THIRD ROW */}
                 <Box
                 p={`1rem 0`}>
@@ -142,6 +144,8 @@ const UserWidget = ({userid, picturePath}) => {
                         </Typography>
                     </FlexBetween>
                 </Box>
+
+                <Divider />
 
                 {/* FOURTH ROW */}
                 <Box
