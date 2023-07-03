@@ -20,6 +20,7 @@ const UserWidget = ({userid, picturePath}) => {
     const dark = palette.neutral.dark;
     const medium = palette.neutral.medium;
     const main = palette.neutral.main;
+    const friendsCount = useSelector((state) => state.user.friends.length);
 
     const getUser = async() => {
         const response = await fetch(`http://localhost:3001/users/${userid}`,
@@ -46,8 +47,7 @@ const UserWidget = ({userid, picturePath}) => {
         location,
         occupation,
         viewedProfile,
-        impressions,
-        friends
+        impressions
     } = user;
 
     return (
@@ -77,7 +77,7 @@ const UserWidget = ({userid, picturePath}) => {
 
                         <Typography
                         color={medium}>
-                            {friends.length} friends
+                            {friendsCount} friends
                         </Typography>
 
                     </Box>
