@@ -5,7 +5,7 @@
 
 NB. If running this app for the first time, you may need to seed the mongo DB with data. To do so, before spinning up the server, uncomment lines 69-71 in server/index.js. Be sure to comment it out again to prevent the db from being overloaded with data. This is intended to only run once, for demo purposes.
 
-1. Create your project on mongo Atlas, create a database and retieve your <DB URL>
+1. Create your project on mongo Atlas, create a database and retieve your cluster url which should look something like: `mongodb+srv://<USERNAME>:<PASSWORD>@<CLUSTER>.xkbuj9m.mongodb.net/?retryWrites=true&w=majority`
 2. Create a .env file in the /server directory and add the following
 ```
 MONGO_URL = <DB URL>
