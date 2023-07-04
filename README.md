@@ -9,7 +9,7 @@ MONGO_URL = <DB URL>
 JWT_SECRET='someSuperHardStringToGuess'
 PORT = 3001
 ```
-3. Ensure that NodeJS is installed and run `npm install`
+3. Ensure that NodeJS is installed and run `cd ./server && npm install`
 4. In terminal from project root `cd ./server` and run `npm start`
 
 ## To start client / React 
