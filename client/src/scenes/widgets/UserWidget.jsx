@@ -21,9 +21,10 @@ const UserWidget = ({userid, picturePath}) => {
     const medium = palette.neutral.medium;
     const main = palette.neutral.main;
     const friendsCount = useSelector((state) => state.user.friends.length);
+    const BASE_URL = process.env.REACT_APP_BASE_URL;
 
     const getUser = async() => {
-        const response = await fetch(`http://localhost:3001/users/${userid}`,
+        const response = await fetch(`${BASE_URL}/users/${userid}`,
         {
             method: 'GET',
             headers: { Authorization: `Bearer ${token}` }

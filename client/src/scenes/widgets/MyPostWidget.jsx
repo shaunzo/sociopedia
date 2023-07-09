@@ -26,6 +26,7 @@ import {
   import { setPosts } from "state";
   
   const MyPostWidget = ({ picturePath }) => {
+    const BASE_URL = process.env.REACT_APP_BASE_URL;
     const dispatch = useDispatch();
     const [isImage, setIsImage] = useState(false);
     const [image, setImage] = useState(null);
@@ -46,7 +47,7 @@ import {
         formData.append("picturePath", image.name);
       }
   
-      const response = await fetch(`http://localhost:3001/posts`, {
+      const response = await fetch(`${BASE_URL}/posts`, {
         method: "POST",
         headers: { Authorization: `Bearer ${token}` },
         body: formData,

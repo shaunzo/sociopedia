@@ -17,5 +17,6 @@ PORT = 3001
 
 ## To start client / React 
 1. In terminal from project root `cd ./client`
+2. Create a .env file and add the BASE_URL variable: `REACT_APP_BASE_URL=http://localhost:3001`
 2. Install dependencies `npm install`
-3. Run React app `npm run start`
+3. Run React app `npm start`
