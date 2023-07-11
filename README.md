@@ -1,5 +1,8 @@
 # sociopedia
 
+## Preview Deployed
+client: https://sociopedia-client.netlify.app  (Netlify)
+server: https://sociopedia-server-fajg.onrender.com (render.com)
 
 ## To start server / backend
 
