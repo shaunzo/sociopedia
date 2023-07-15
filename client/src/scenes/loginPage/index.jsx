@@ -1,45 +1,41 @@
-import { Box, Typography, useTheme, useMediaQuery } from "@mui/material";
+import { Box, useTheme, useMediaQuery } from "@mui/material";
 import Form from './Form';
 
 const LoginPage = () => {
     const theme = useTheme();
     const isNonMobileScreens = useMediaQuery("(min-width: 1000px)");
     
-    return <Box>
-                <Box
-                    width='100%'
-                    backgroundColor={theme.palette.background.alt}
-                    p='1rem 6%'
-                    textAlign='center'>
+    return <Box
+            display='flex'
+            flexDirection={ isNonMobileScreens ? 'row' : 'column-reverse' }
+            gap={`15px`}
+            alignItems={`center`}
+            height={`100%`}>
 
-                    <Typography
-                        fontWeight="bold"
-                        fontSize="32px"
-                        color="primary">
-                        Sociopedia
-                    </Typography>
+                <Box
+                flexBasis={ isNonMobileScreens ? '50%' : '70%' }
+                display={`flex`}
+                flexDirection={`column`}
+                justifyContent={`center`}
+                alignItems={`center`}>
+
+                    <Box width={ isNonMobileScreens ? '33%' : '100%'}>
+                        <Form/>
+                    </Box>
+
                 </Box>
 
                 <Box
-                    width={isNonMobileScreens ? '50%' : '93%'}
-                    p='2rem'
-                    m='2rem auto'
-                    borderRadius='1.5rem'
-                    backgroundColor={theme.palette.background.alt}>
-
-                    <Typography
-                        fontWeight='500'
-                        variant='h5'
-                        sx={{mb: '1.5px'}}>
-                        Welcome to SocioPedia - the Social Media for sociopaths!
-                    </Typography>
-
-                    <Form/>
-
-
+                flexBasis={ isNonMobileScreens ? '50%' : '30%' }
+                backgroundColor={ theme.palette.background.alt }
+                sx={{
+                    backgroundImage: "url('../assets/welcome.jpg')",
+                    backgroundRepeat: 'no-repeat',
+                    backgroundSize: 'cover',
+                    backgroundPosition: 'center center'
+                }}
+                height={`100%`}>
                 </Box>
-
-
             </Box>
 };
 
