@@ -37,7 +37,7 @@ const Navbar = () => {
     const neutralLight = theme.palette.neutral.light;
     const dark = theme.palette.neutral.dark;
     const background = theme.palette.background.default;
-    const primaryLight = theme.palette.primary.light;
+    // const primaryLight = theme.palette.primary.light;
     const alt = theme.palette.background.alt;
 
     const fullName = `${user?.firstName} ${user?.lastName}`;
@@ -45,19 +45,15 @@ const Navbar = () => {
 
     return <FlexBetween padding="1rem 6%" backgroundColor={alt}>
         <FlexBetween gap="1.75rem">
-            <Typography
-                fontWeight="bold"
-                fontSize="clamp(1rem, 2rem, 2.25rem)"
-                color="primary"
-                onClick={() => navigate("/home")}
-                sx={{
-                    "&:hover": {
-                        color: primaryLight,
-                        cursor: 'pointer'
-                    }
-                }}>
-                Sociopedia
-            </Typography>
+            <Box
+            width={`150px`}
+            height={`auto`}
+            onClick={() => navigate("/home")}
+            display={`flex`}
+            justifyContent={`center`}
+            alignItems={`center`}>
+                <img className="navbar-logo" src={ theme.palette.mode === "dark" ? `./assets/logo-white.svg` : `./assets/logo-black.svg`} alt="Sociopedia" srcset="" />
+            </Box>
 
             {isNonMobileScreens && (
                 <FlexBetween
