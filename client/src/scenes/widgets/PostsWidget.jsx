@@ -20,15 +20,19 @@ const PostsWidget = ({ userId, isProfile = false }) => {
 };
 
 const getUserPosts = async () => {
-    const response = await fetch(
-        `${BASE_URL}/posts/${userId}/posts`,
-        {
-            method: "GET",
-            headers: { Authorization: `Bearer ${token}` },
-        }
-        );
-        const data = await response.json();
-        dispatch(setPosts({ posts: data }));
+    try {
+      const response = await fetch(
+          `${BASE_URL}/post/${userId}`,
+          {
+              method: "GET",
+              headers: { Authorization: `Bearer ${token}` },
+          }
+          );
+          const data = await response.json();
+          dispatch(setPosts({ posts: data }));
+    } catch(err) {
+      console.error('Error fetching user posts...', err)
+    }
     };
     
     useEffect(() => {

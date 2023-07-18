@@ -52,7 +52,7 @@ const Navbar = () => {
             display={`flex`}
             justifyContent={`center`}
             alignItems={`center`}>
-                <img className="navbar-logo" src={ theme.palette.mode === "dark" ? `./assets/logo-white.svg` : `./assets/logo-black.svg`} alt="Sociopedia" srcset="" />
+                <img className="navbar-logo" src={ theme.palette.mode === "dark" ? `/assets/logo-white.svg` : `/assets/logo-black.svg`} alt="Sociopedia" srcSet="" />
             </Box>
 
             {isNonMobileScreens && (
