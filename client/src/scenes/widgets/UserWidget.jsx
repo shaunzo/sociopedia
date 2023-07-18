@@ -166,7 +166,7 @@ const UserWidget = ({userid, picturePath}) => {
                     mb={`0.5rem`}>
                         <FlexBetween
                         gap={`1rem`}>
-                            <img src='../assets/twitter.png' alt='twitter' />
+                            <img src='/assets/twitter.png' alt='twitter' />
                             <Box>
                                 <Typography
                                 color={main}
@@ -186,7 +186,7 @@ const UserWidget = ({userid, picturePath}) => {
                     gap={`1rem`}>
                         <FlexBetween
                         gap={`1rem`}>
-                            <img src='../assets/linkedin.png' alt='linkedin' />
+                            <img src='/assets/linkedin.png' alt='linkedin' />
                             <Box>
                                 <Typography
                                 color={main}

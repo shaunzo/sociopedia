@@ -104,6 +104,7 @@ const Navbar = () => {
                         <MenuItem value={fullName}>
                             <Typography>{fullName}</Typography>
                         </MenuItem>
+                        <MenuItem onClick={() => navigate(`/profile/${user._id}/edit`)}>Settings</MenuItem>
                         <MenuItem onClick={() => dispatch(setLogout())}>Log Out</MenuItem>
 
                     </Select>
@@ -177,6 +178,7 @@ const Navbar = () => {
                             <MenuItem value={fullName}>
                                 <Typography>{fullName}</Typography>
                             </MenuItem>
+                            <MenuItem onClick={() => navigate(`/profile/${user._id}/edit`)}>Settings</MenuItem>
                             <MenuItem onClick={() => dispatch(setLogout())}>Log Out</MenuItem>
 
                         </Select>
