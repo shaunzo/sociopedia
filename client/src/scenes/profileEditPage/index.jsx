@@ -1,10 +1,10 @@
-import { Box, useMediaQuery, useTheme } from "@mui/material";
+import { Box, Typography, useMediaQuery, useTheme } from "@mui/material";
 import { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
 import Navbar from "scenes/navbar";
-import UserWidget from "scenes/widgets/UserWidget";
 import WidgetWrapper from 'components/WidgetWrapper';
+import UserImage from 'components/UserImage';
 
 const ProfileEditPage = () => {
     const BASE_URL = process.env.REACT_APP_BASE_URL;
@@ -39,14 +39,36 @@ const ProfileEditPage = () => {
                 gap="2rem"
                 justifyContent="center">
 
-                <Box display={`block`} width={`200px`}>
+                <Box display={`block`} width={`300px`}>
                     <Box
+                    textAlign={`center`}
                     sx={{
-                        padding: '1.5rem 1.5rem 0.75rem 1.5rem',
+                        padding: '1.5rem',
                         backgroundColor: theme.palette.background.alt,
                         borderRadius: '0.75rem'
                     }}>
-                        Avatar settings Widget
+
+                        <Typography
+                        variant="h2"
+                        align="center"
+                        fontWeight={`700`}
+                        mb={`20px`}>
+                            {user.firstName} <br/>
+                            {user.lastName}
+                        </Typography>
+
+                        <Typography color={theme.palette.grey[700]} mb={`25px`}>
+                            {user.email}
+                        </Typography>
+
+                        <Box
+                            width={`100%`}
+                            display={`flex`}
+                            justifyContent={`center`}
+                            alignItems={`cengter`}>
+                            <UserImage image={user.picturePath} size={`150px`} />
+                        </Box>
+
                     </Box>
                 </Box>
 
@@ -54,6 +76,20 @@ const ProfileEditPage = () => {
                     <Box
                     mt={isNonMobileScreens ? undefined : "2rem"}
                     >
+                        Settings form goes here ddfsdffdsffsddfdffdsfsdfsdfsdfs
+                        Settings form goes here ddfsdffdsffsddfdffdsfsdfsdfsdfs
+                        Settings form goes here ddfsdffdsffsddfdffdsfsdfsdfsdfs
+                        Settings form goes here ddfsdffdsffsddfdffdsfsdfsdfsdfs
+                        Settings form goes here ddfsdffdsffsddfdffdsfsdfsdfsdfs
+                        Settings form goes here ddfsdffdsffsddfdffdsfsdfsdfsdfs
+
+                        Settings form goes here ddfsdffdsffsddfdffdsfsdfsdfsdfs
+                        Settings form goes here ddfsdffdsffsddfdffdsfsdfsdfsdfs
+                        Settings form goes here ddfsdffdsffsddfdffdsfsdfsdfsdfs
+                        Settings form goes here ddfsdffdsffsddfdffdsfsdfsdfsdfs
+                        Settings form goes here ddfsdffdsffsddfdffdsfsdfsdfsdfs
+                        Settings form goes here ddfsdffdsffsddfdffdsfsdfsdfsdfs
+
                         Settings form goes here ddfsdffdsffsddfdffdsfsdfsdfsdfs
                         Settings form goes here ddfsdffdsffsddfdffdsfsdfsdfsdfs
                         Settings form goes here ddfsdffdsffsddfdffdsfsdfsdfsdfs
