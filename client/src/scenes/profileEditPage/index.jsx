@@ -6,6 +6,7 @@ import Navbar from "scenes/navbar";
 import WidgetWrapper from 'components/WidgetWrapper';
 import UserImage from 'components/UserImage';
 import SettingsForm from './settings-form';
+import SecuritySettingsForm from "./security-settings-form";
 
 const ProfileEditPage = () => {
     const [activeTabIndex, setActiveTabIndex] = useState(0);
@@ -87,6 +88,7 @@ const ProfileEditPage = () => {
                         <Divider sx={{marginBottom: '20px'}} />
 
                         { activeTabIndex === 0 ? <SettingsForm /> : <></>}
+                        { activeTabIndex === 1 ? <SecuritySettingsForm/> : <></> }
                     </Box>
                 </WidgetWrapper>
 

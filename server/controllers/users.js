@@ -1,4 +1,5 @@
 import User from "../models/User.js";
+import bcrypt from 'bcrypt';
 
 // READ
 export const getUser = async(req, res) => {
@@ -49,9 +50,29 @@ export const updateUser = async (req, res) => {
         res.status(200).json(user);
 
     } catch (err) {
-        res.status(404).json({message: `${err.message} - ${JSON.stringify(req.params)}`,});
+        res.status(404).json({message: `${err.message} - ${JSON.stringify(req.params)}`});
     }
+}
 
+export const updatePassword = async (req, res) => {
+    try {
+        const { id } = req.params;
+        const { oldPassword, password } = req.body;
+        const user = await User.findById(id);
+        const isMatch = await bcrypt.compare(oldPassword, user.password);
+
+        if(!isMatch) return res.status(400).json({msg: "Old password does not match"});
+
+        const salt = await bcrypt.genSalt();
+        const updatedPasswordHash = await bcrypt.hash(password, salt);
+
+        user.password = updatedPasswordHash;
+
+        const updatedUser = await user.save();
+        res.status(200).json(updatedUser);
+    } catch (err) {
+        res.status(404).json({message: `${err.message} - ${JSON.stringify(req.params)}`});
+    }
 }
 
 export const addRemoveFriend = async (req, res) => {
