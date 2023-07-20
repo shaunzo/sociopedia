@@ -57,6 +57,7 @@ const getUserPosts = async () => {
           userPicturePath,
           likes,
           comments,
+          createdAt
         }) => (
 
           <PostWidget
@@ -70,6 +71,7 @@ const getUserPosts = async () => {
             userPicturePath={userPicturePath}
             likes={likes}
             comments={comments}
+            createdAt={createdAt}
           />
         )
       )}

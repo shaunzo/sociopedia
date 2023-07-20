@@ -3,6 +3,7 @@ import {
     FavoriteBorderOutlined,
     FavoriteOutlined,
     ShareOutlined,
+    Delete
   } from "@mui/icons-material";
   import { Box, Divider, IconButton, Typography, useTheme } from "@mui/material";
   import FlexBetween from "components/FlexBetween";
@@ -11,6 +12,7 @@ import {
   import { useState } from "react";
   import { useDispatch, useSelector } from "react-redux";
   import { setPost } from "state";
+  import * as moment from 'moment';
   
   const PostWidget = ({
     postId,
@@ -22,6 +24,7 @@ import {
     userPicturePath,
     likes,
     comments,
+    createdAt
   }) => {
     const [isComments, setIsComments] = useState(false);
     const dispatch = useDispatch();
@@ -29,6 +32,8 @@ import {
     const loggedInUserId = useSelector((state) => state.user._id);
     const isLiked = Boolean(likes[loggedInUserId]);
     const likeCount = Object.keys(likes).length;
+    const {_id} = useSelector((state) => state.user);
+    const createdDate = moment(createdAt).toDate();
   
     const { palette } = useTheme();
     const main = palette.neutral.main;
@@ -59,6 +64,11 @@ import {
         <Typography color={main} sx={{ mt: "1rem" }}>
           {description}
         </Typography>
+
+        <Typography style={{fontStyle: `italic`}} color={palette.grey[600]} sx={{ mt: "1rem" }}>
+          Posted on {moment(createdDate).format('dddd, MMMM Do YYYY, h:mm:ss a')}
+        </Typography>
+
         {picturePath && (
           <img
             width="100%"
@@ -88,10 +98,18 @@ import {
               <Typography>{comments.length}</Typography>
             </FlexBetween>
           </FlexBetween>
-  
-          <IconButton>
-            <ShareOutlined />
-          </IconButton>
+
+          <Box>
+            { postUserId === _id ?
+              <IconButton>
+                <Delete />
+              </IconButton>
+            : <></> }
+    
+            <IconButton>
+              <ShareOutlined />
+            </IconButton>
+          </Box>
         </FlexBetween>
         {isComments && (
           <Box mt="0.5rem">
