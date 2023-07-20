@@ -1,31 +1,28 @@
-import { Box, Typography, useMediaQuery, useTheme } from "@mui/material";
-import { useEffect, useState } from "react";
+import { Box, Typography, useMediaQuery, useTheme, Tabs, Tab, Divider } from "@mui/material";
+import { useState } from "react";
 import { useSelector } from "react-redux";
-import { useParams } from "react-router-dom";
+// import { useParams } from "react-router-dom";
 import Navbar from "scenes/navbar";
 import WidgetWrapper from 'components/WidgetWrapper';
 import UserImage from 'components/UserImage';
+import SettingsForm from './settings-form';
 
 const ProfileEditPage = () => {
-    const BASE_URL = process.env.REACT_APP_BASE_URL;
-    const [user, setUser] = useState(null);
-    const { userId } = useParams();
-    const token = useSelector((state) => state.token);
+    const [activeTabIndex, setActiveTabIndex] = useState(0);
     const isNonMobileScreens = useMediaQuery("(min-width:1000px)");
     const theme = useTheme();
+    const user = useSelector((state) => state.user);
 
-    const getUser = async () => {
-        const response = await fetch(`${BASE_URL}/users/${userId}`, {
-          method: "GET",
-          headers: { Authorization: `Bearer ${token}` },
-        });
-        const data = await response.json();
-        setUser(data);
-    };
+    const handleTabChange  = (event, newIndex) => {
+        setActiveTabIndex(newIndex)
+    }
 
-    useEffect(() => {
-        getUser();
-    }, []); // eslint-disable-line react-hooks/exhaustive-deps
+    const  a11yProps = (index) => {
+        return {
+          id: `simple-tab-${index}`,
+          'aria-controls': `simple-tabpanel-${index}`,
+        };
+    }
     
     if (!user) return null;
 
@@ -76,26 +73,20 @@ const ProfileEditPage = () => {
                     <Box
                     mt={isNonMobileScreens ? undefined : "2rem"}
                     >
-                        Settings form goes here ddfsdffdsffsddfdffdsfsdfsdfsdfs
-                        Settings form goes here ddfsdffdsffsddfdffdsfsdfsdfsdfs
-                        Settings form goes here ddfsdffdsffsddfdffdsfsdfsdfsdfs
-                        Settings form goes here ddfsdffdsffsddfdffdsfsdfsdfsdfs
-                        Settings form goes here ddfsdffdsffsddfdffdsfsdfsdfsdfs
-                        Settings form goes here ddfsdffdsffsddfdffdsfsdfsdfsdfs
+                        <Tabs
+                            sx={{marginBottom: '20px'}}
+                            value={activeTabIndex}
+                            onChange={handleTabChange}
+                            aria-label="Settings Tabs">
 
-                        Settings form goes here ddfsdffdsffsddfdffdsfsdfsdfsdfs
-                        Settings form goes here ddfsdffdsffsddfdffdsfsdfsdfsdfs
-                        Settings form goes here ddfsdffdsffsddfdffdsfsdfsdfsdfs
-                        Settings form goes here ddfsdffdsffsddfdffdsfsdfsdfsdfs
-                        Settings form goes here ddfsdffdsffsddfdffdsfsdfsdfsdfs
-                        Settings form goes here ddfsdffdsffsddfdffdsfsdfsdfsdfs
+                            <Tab label="Personal Info" {...a11yProps(0)} />
+                            <Tab label="Security" {...a11yProps(1)} />
+                            <Tab label="Social" {...a11yProps(1)} />
+                        </Tabs>
 
-                        Settings form goes here ddfsdffdsffsddfdffdsfsdfsdfsdfs
-                        Settings form goes here ddfsdffdsffsddfdffdsfsdfsdfsdfs
-                        Settings form goes here ddfsdffdsffsddfdffdsfsdfsdfsdfs
-                        Settings form goes here ddfsdffdsffsddfdffdsfsdfsdfsdfs
-                        Settings form goes here ddfsdffdsffsddfdffdsfsdfsdfsdfs
-                        Settings form goes here ddfsdffdsffsddfdffdsfsdfsdfsdfs
+                        <Divider sx={{marginBottom: '20px'}} />
+
+                        { activeTabIndex === 0 ? <SettingsForm /> : <></>}
                     </Box>
                 </WidgetWrapper>
 

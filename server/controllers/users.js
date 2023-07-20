@@ -33,6 +33,27 @@ export const getUserFriends = async(req, res) => {
 };
 
 // UPDATE
+export const updateUser = async (req, res) => {
+    try {
+        const { id } = req.params;
+        const { firstName, lastName, email, location, occupation } = req.body;
+        const user = await User.findById(id);
+
+        user.firstName = firstName;
+        user.lastName= lastName;
+        user.email = email;
+        user.location = location;
+        user.occupation = occupation;
+
+        await user.save();
+        res.status(200).json(user);
+
+    } catch (err) {
+        res.status(404).json({message: `${err.message} - ${JSON.stringify(req.params)}`,});
+    }
+
+}
+
 export const addRemoveFriend = async (req, res) => {
     try {
         const { id, friendId } = req.params;

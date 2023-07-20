@@ -1,10 +1,10 @@
 import {
     EditOutlined,
     DeleteOutlined,
-    AttachFileOutlined,
-    GifBoxOutlined,
+    // AttachFileOutlined,
+    // GifBoxOutlined,
     ImageOutlined,
-    MicOutlined,
+    // MicOutlined,
     MoreHorizOutlined,
   } from "@mui/icons-material";
   import {
@@ -134,20 +134,20 @@ import {
   
           {isNonMobileScreens ? (
             <>
-              <FlexBetween gap="0.25rem">
+              {/* <FlexBetween gap="0.25rem">
                 <GifBoxOutlined sx={{ color: mediumMain }} />
                 <Typography color={mediumMain}>Clip</Typography>
-              </FlexBetween>
+              </FlexBetween> */}
   
-              <FlexBetween gap="0.25rem">
+              {/* <FlexBetween gap="0.25rem">
                 <AttachFileOutlined sx={{ color: mediumMain }} />
                 <Typography color={mediumMain}>Attachment</Typography>
-              </FlexBetween>
+              </FlexBetween> */}
   
-              <FlexBetween gap="0.25rem">
+              {/* <FlexBetween gap="0.25rem">
                 <MicOutlined sx={{ color: mediumMain }} />
                 <Typography color={mediumMain}>Audio</Typography>
-              </FlexBetween>
+              </FlexBetween> */}
             </>
           ) : (
             <FlexBetween gap="0.25rem">
