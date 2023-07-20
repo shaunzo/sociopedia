@@ -7,6 +7,12 @@ const initialState = {
     posts: []
 };
 
+const compareByCreatedAt = (a, b) => {
+    const dateA = new Date(a.createdAt);
+    const dateB = new Date(b.createdAt);
+    return dateB - dateA;
+}
+
 export const authSlice = createSlice({
     name: 'auth',
     initialState,
@@ -33,14 +39,18 @@ export const authSlice = createSlice({
             }
         },
         setPosts: (state, action) => {
-            state.posts = action.payload.posts;
+            const sortedPosts = action.payload.posts.slice().sort(compareByCreatedAt)
+
+            state.posts = sortedPosts;
         },
         setPost: (state, action) => {
             const updatedPosts = state.posts.map((post) => {
                 if(post._id === action.payload.post._id) return action.payload.post;
                 return post;
             });
-            state.posts = updatedPosts;
+
+            const sortedPosts = updatedPosts.slice().sort(compareByCreatedAt);
+            state.posts = sortedPosts;
         }
     }
 })

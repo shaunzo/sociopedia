@@ -10,6 +10,8 @@ const PostsWidget = ({ userId, isProfile = false }) => {
   const token = useSelector((state) => state.token);
   const BASE_URL = process.env.REACT_APP_BASE_URL;
 
+  console.log(posts);
+
   const getPosts = async () => {
     const response = await fetch(`${BASE_URL}/post`, {
       method: "GET",

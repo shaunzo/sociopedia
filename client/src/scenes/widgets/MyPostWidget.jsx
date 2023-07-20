@@ -24,6 +24,7 @@ import {
   import { useState } from "react";
   import { useDispatch, useSelector } from "react-redux";
   import { setPosts } from "state";
+import Loader from "components/Loader";
   
   const MyPostWidget = ({ picturePath }) => {
     const BASE_URL = process.env.REACT_APP_BASE_URL;
@@ -37,8 +38,10 @@ import {
     const isNonMobileScreens = useMediaQuery("(min-width: 1000px)");
     const mediumMain = palette.neutral.mediumMain;
     const medium = palette.neutral.medium;
+    const [isLoading, setIsLoading] = useState(false);
   
     const handlePost = async () => {
+      setIsLoading(true);
       const formData = new FormData();
       formData.append("userId", _id);
       formData.append("description", post);
@@ -56,10 +59,16 @@ import {
       dispatch(setPosts({ posts }));
       setImage(null);
       setPost("");
+      setIsLoading(false);
     };
   
     return (
-      <WidgetWrapper>
+      isLoading ?
+        <Box padding={`30px`} display={`flex`} justifyContent={`center`} alignItems={`center`}>
+          <Loader />
+        </Box>
+        :
+        <WidgetWrapper>
         <FlexBetween gap="1.5rem">
           <UserImage image={picturePath} />
           <InputBase
@@ -168,6 +177,7 @@ import {
           </Button>
         </FlexBetween>
       </WidgetWrapper>
+      
     );
   };
   
