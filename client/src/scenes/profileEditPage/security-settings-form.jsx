@@ -36,7 +36,6 @@ const SecuritySettingsForm = () => {
     const handleFormSubmit = async (values) => {
 
         try {
-            console.log(values);
             setShowError(false);
             setShowUpdateSuccess(false);
             setIsLoading(true);
